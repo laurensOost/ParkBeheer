@@ -14,13 +14,15 @@ namespace ParkBusinessLayer.Model
         public int Nr { get; private set; }
         public bool Actief { get; set; }
         public Park Park { get; private set; }
-        private Dictionary<Huurder,List<Huurcontract>> _huurcontracten = new  Dictionary<Huurder, List<Huurcontract>>();
+        private Dictionary<Huurder, List<Huurcontract>> _huurcontracten = new Dictionary<Huurder, List<Huurcontract>>();
 
-        public Huis(int id, string straat, int nr, bool actief, Park park, Dictionary<Huurder, List<Huurcontract>> huurcontracten)
+        public Huis(int id, string straat, int nr, bool actief, Park park,
+            Dictionary<Huurder, List<Huurcontract>> huurcontracten)
             : this(id, straat, nr, actief, park)
         {
             _huurcontracten = huurcontracten;
         }
+
         public Huis(string straat, int nr, Park park)
         {
             ZetStraat(straat);
@@ -28,13 +30,19 @@ namespace ParkBusinessLayer.Model
             Park = park;
             Actief = true;
         }
+
         public Huis(int id, string straat, int nr, bool actief, Park park) : this(straat, nr, park)
         {
             ZetId(id);
             Actief = actief;
         }
 
-        public IReadOnlyList<Huurcontract> Huurcontracten()
+        public Huis()
+        {
+
+        }
+
+    public IReadOnlyList<Huurcontract> Huurcontracten()
         {
             return _huurcontracten.Values.SelectMany(x=>x).ToList();
         }

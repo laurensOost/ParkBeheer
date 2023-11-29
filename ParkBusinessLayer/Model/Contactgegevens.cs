@@ -8,6 +8,7 @@
             Tel = tel;
             Adres = adres;
         }
+        public int Id { get; set; }
         public string Email { get; set; }
         public string Tel { get; set; }
         public string Adres { get; set; }

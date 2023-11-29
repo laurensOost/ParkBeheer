@@ -10,7 +10,13 @@ namespace ParkBusinessLayer.Model
             EindDatum = startDatum.AddDays(aantaldagen);
             Aantaldagen = aantaldagen;
         }
-        public DateTime StartDatum { get; set; }
+
+        public Huurperiode()
+        {
+
+        }
+
+    public DateTime StartDatum { get; set; }
         public DateTime EindDatum { get; set; }
         public int Aantaldagen { get; set; }
 

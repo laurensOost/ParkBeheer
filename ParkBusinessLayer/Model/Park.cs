@@ -14,6 +14,11 @@ namespace ParkBusinessLayer.Model
         {
             _huis = huis;
         }
+
+        public Park()
+        {
+
+        }
         public Park(string id, string naam, string locatie)
         {
             ZetId(id);
