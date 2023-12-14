@@ -26,7 +26,7 @@ namespace ParkDataLayer.Entitites
         [ForeignKey("ParkId")]
         public virtual ParkEF ParkEf { get; set; }
 
-        public ICollection<HuurcontractEF> Huurcontracten { get; set; } = new List<HuurcontractEF>(); // nota's Tom, entity heeft geen dictionaries, dus gaat iets anders moeten doen, = navigation property
+        public ICollection<HuurcontractEF> Huurcontracten { get; set; } = new List<HuurcontractEF>(); // nota's Tom, entity heeft geen dictionaries, dus gaat iets anders moeten doen
 
         // Default constructor
         public HuisEF() { }

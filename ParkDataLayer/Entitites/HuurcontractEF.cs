@@ -21,12 +21,12 @@ public class HuurcontractEF
     public int AantalDagen => (EindDatum - StartDatum).Days;
 
     [Required]
-    [ForeignKey("Huis")]
+    [ForeignKey("HuisEf")]
     public int HuisId { get; set; }
     public virtual HuisEF HuisEf { get; set; }
 
     [Required]
-    [ForeignKey("Huurder")]
+    [ForeignKey("HuurderEf")]
     public int HuurderId { get; set; }
     public HuurderEF HuurderEf { get; set; }
 }

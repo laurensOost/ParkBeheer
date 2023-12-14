@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using ParkDataLayer.Context;
 using ParkDataLayer.Entitites;
@@ -13,10 +14,11 @@ namespace DemoConsole
             using (var context = new ParkContext())
             {
                 // Seed the database
-                SeedDatabase(context);
 
                 // Perform some operations
                 ShowAllParks(context);
+                
+                ShowAllHousesAndContracts(context);
             }
         }
 
@@ -82,6 +84,29 @@ namespace DemoConsole
             }
         }
         
+        private static void ShowAllHousesAndContracts(ParkContext context)
+        {
+            // Fetch all houses with their contracts
+            var houses = context.Huizen
+                .Include(h => h.Huurcontracten)
+                .ToList();
+
+            if (houses.Any())
+            {
+                foreach (var house in houses)
+                {
+                    Console.WriteLine($"House ID: {house.Id}, Street: {house.Straat}, Number: {house.Nr}, Active: {house.Actief}");
+                    foreach (var contract in house.Huurcontracten)
+                    {
+                        Console.WriteLine($"\tContract ID: {contract.Id}, Start Date: {contract.StartDatum}, End Date: {contract.EindDatum}");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No houses found.");
+            }
+        }
         
     }
 }
